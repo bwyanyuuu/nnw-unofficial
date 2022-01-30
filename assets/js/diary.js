@@ -49,7 +49,7 @@ $(document).ready(function() {
             // hito.fadeOut(50).delay(10).fadeIn(100);
             $(".diary-imglist").removeClass("show");
             $(".diary-imglist").addClass("hide");
-            $(".diary-imglist").css("animation-running-stste", "running");
+            $(".diary-imglist").fadeIn(1000);
             // $(".diary-imglist").fadeOut(1000);
             // setTimeout(function(){
                 hito.attr("src", "./images/man.png");
