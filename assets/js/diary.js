@@ -1,5 +1,8 @@
+var mem = $('html').attr('id');
 $(document).ready(function() {
-    // $('.diary').hide();
+    // initial diary content
+    
+    updateDiary(mem, $('.diary-list ul li:first-child').attr('id'));
     setTimeout(function(){
         $('.diary-list').fadeIn(1000);
         $('.diary').show();
@@ -7,58 +10,72 @@ $(document).ready(function() {
         $('.diary').css("display", "flex");
     },1000);
     setTimeout(function(){
-        // $('.diary').show()
-        $('.diary-content.active').fadeIn(1000);
+        $('.diary-content').fadeIn(1000);
         $('img.diary-img').show();
-        // $('.diary-content').css("display", "")
     },2500);
-    // $('.diary').delay(2500).css("display", "flex");
-    // $('.diary').style("display:flex");
-    $('.day').click(function(){
-        var id = $(this).attr("id");
-        if($('.diary-content.active').attr("id").substring(1, 7) != id){
-            $('.diary-content.active').fadeOut(500);
-            $('.diary-content.active').removeClass("active");
-            $('#d' + id).addClass("active");
-            $('#d' + id).delay(500).fadeIn(500);
-            // $('#d' + id).find('.diary-content')
-            // alert("click!");
-            console.log($('.diary-content.active').attr("id").substring(1, 7) + " " + id)
-        }
-        
-    });
+    
     var isShow = false;
     $('img.diary-img').click(function () { 
         console.log("in");
         var hito = $(this);
         if(!isShow){
-            $(".diary-imglist").removeClass("hide");
             $(".diary-imglist").addClass("show");
-            $(".diary-imglist").hide();
-            // hito.fadeOut(50).delay(10).fadeIn(100);
-            // setTimeout(function(){
-                hito.attr("src", "./images/man2.png");
-                
-                
-                $(".diary-imglist").fadeIn(1000);
-                
-                isShow = true;
-            // }, 60);
+            hito.attr("src", "./images/man2.png");
+            isShow = true;
         }
         else{
-            // hito.fadeOut(50).delay(10).fadeIn(100);
             $(".diary-imglist").removeClass("show");
-            $(".diary-imglist").addClass("hide");
-            $(".diary-imglist").fadeIn(1000);
-            // $(".diary-imglist").fadeOut(1000);
-            // setTimeout(function(){
-                hito.attr("src", "./images/man.png");
-                isShow = false;
-            // }, 60);
-            // setTimeout(function(){
-                
-            // }, 1060);
+            hito.attr("src", "./images/man.png");
+            isShow = false;
         }
     });
     
 });
+
+$(document).on('click', '.diary-list li', function(){
+    var id = $(this).attr("id");
+    if($('.diary-content').attr("date") != id){
+        $(".diary-content").fadeOut(500);
+        updateDiary(mem, id);
+        $(".diary-content").fadeIn(500);
+    }
+});
+
+$(document).on('click', '.diary-imglist', function(){
+    var th = $(this);
+    th.addClass('go');
+    th.css("z-index", "8")
+    setTimeout(function(){
+        $('.bg').fadeIn(500);
+    }, 1000)
+    setTimeout(function(){
+        var url = th.attr('href');
+        window.location.href = url;
+    }, 1600)
+});
+
+function updateDiary(mem, date){
+    var url = 'https://raw.githubusercontent.com/linxiii/nnw-unofficial/main/diary/' + date + '-' + mem + '.html'
+    var txt = httpGet(url)
+    $(".diary-content").html(txt);
+    $(".diary-content").attr('date', date);
+}
+
+function httpGet(theUrl){
+    let xmlhttp;
+    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            return xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", theUrl, false);
+    xmlhttp.send();
+    
+    return xmlhttp.response;
+}
