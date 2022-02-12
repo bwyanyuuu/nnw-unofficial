@@ -1,5 +1,4 @@
 <img src="./images/diary/4_top.png"/>
-<div class="entry__body wysiwyg">
                 メイクって💄すごいなぁって思いました<br>
 なんと言ってもリップね<br>
 これ一番大事ね！<br>
@@ -17,8 +16,8 @@
 <br/>
 笑笑！！<br/>
 <div align="center" class="slick-box-diary">
-<div><img alt="" src="./images/211127_takahashi_1.jpg"/></div>
-<div><img alt="" src="./images/211127_takahashi_2.jpg"/></div>
+<div><img alt="" src="./images/content/211127_takahashi_1.jpg"/></div>
+<div><img alt="" src="./images/content/211127_takahashi_2.jpg"/></div>
 </div>
 <br/>
 <br/>
@@ -26,4 +25,4 @@
 入所して7年になりました<br/>
 これからもよろしくお願いします。
                 
-              </br></br></br></div>
+              </br></br></br>
