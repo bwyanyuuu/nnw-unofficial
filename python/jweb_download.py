@@ -3,11 +3,12 @@ import urllib.request
 from bs4 import BeautifulSoup
 from fillcontent import*
 import time
+from datetime import datetime
 import os
 import sys
 
 # 儲存路徑
-path = "./diary-resource"
+path = "../diary-resource"
 
 # 預定義
 nameMem = [None, "大吾", "流星", "米七", "恭平", "長尾", "丈君", "大橋"]
@@ -79,7 +80,7 @@ def getDiary(memidx, url, headers, findPre):
             pass
     html = html.replace("/images/53/287/", "./images/")
     # 加入網頁
-    n = './diarya%d.html' % memidx
+    n = '../diarya%d.html' % memidx
     d = open(n, 'r', encoding='utf-8')
     h = d.read()
     sd = BeautifulSoup(h, "html.parser")
@@ -87,8 +88,9 @@ def getDiary(memidx, url, headers, findPre):
     d.close()
     d = open(n, 'w', encoding='utf-8')
     d.write(sd.prettify(indent_width=4))
+    d.close()
 
-    contentFile('./', daystr, memidx, soup)
+    contentFile('../', daystr, memidx, soup)
 
     # 儲存網頁
     fd = open(filename, "w", encoding="UTF-8")
@@ -98,7 +100,8 @@ def getDiary(memidx, url, headers, findPre):
     # git push
     if dcnt > 0:
         os.system('git add .')
-        os.system('git commit -m "daily update"')
+        x = datetime.now()
+        os.system('git commit -m "%s" -m "daily update"' % x.strftime("%y%m%d-%H%M"))
         os.system('git push')
     
 
