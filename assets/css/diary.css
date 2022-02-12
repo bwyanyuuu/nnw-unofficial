@@ -357,7 +357,7 @@ img {
     white-space: no-wrap;
     display: none;
 }
-.diary-content > img{
+.diary-content > img, .slick-box-diary img{
     width: 100%;
     margin: 1rem 0;
 }

@@ -30,16 +30,19 @@ $(document).ready(function() {
             hito.attr("src", url);
             isShow = false;
         }
-    });
-    
+    });    
 });
 
 $(document).on('click', '.diary-list li', function(){
     var id = $(this).attr("id");
     if($('.diary-content').attr("date") != id){
         $(".diary-content").fadeOut(500);
-        updateDiary(mem, id);
-        $(".diary-content").fadeIn(500);
+        setTimeout(function(){
+            updateDiary(mem, id);
+            $(".diary-content").scrollTop(0);
+            $(".diary-content").fadeIn(500); 
+        }, 500);
+        
     }
 });
 
@@ -61,6 +64,11 @@ function updateDiary(mem, date){
     var txt = httpGet(url)
     $(".diary-content").html(txt);
     $(".diary-content").attr('date', date);
+    $('.slick-box-diary').slick({ 
+        dots: true,
+        arrows: false,
+        adaptiveHeight: true,
+    });
 }
 
 function httpGet(theUrl){
