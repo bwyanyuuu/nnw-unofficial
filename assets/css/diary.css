@@ -303,15 +303,16 @@ img {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  
 }
 
-#nnw1 .diary-list > ul > li > a{background-color: #fff4f9;}
-#nnw2 .diary-list > ul > li > a{background-color: #fff4f9;}
+#nnw1 .diary-list > ul > li > a{background-color: #ffbfbf;}
+#nnw2 .diary-list > ul > li > a{background-color: #ffe8da;}
 #nnw3 .diary-list > ul > li > a{background-color: #fff4f9;}
-#nnw4 .diary-list > ul > li > a{background-color: #fff4f9;}
-#nnw5 .diary-list > ul > li > a{background-color: #fff4f9;}
-#nnw6 .diary-list > ul > li > a{background-color: #fff4f9;}
-#nnw7 .diary-list > ul > li > a{background-color: #fff4f9;}
+#nnw4 .diary-list > ul > li > a{background-color: #f1dcff;}
+#nnw5 .diary-list > ul > li > a{background-color: #fffebd;}
+#nnw6 .diary-list > ul > li > a{background-color: #d1f8ff;}
+#nnw7 .diary-list > ul > li > a{background-color: #bbffb3;}
 
 .diary-list > ul > li > a:focus {
   outline: 0;

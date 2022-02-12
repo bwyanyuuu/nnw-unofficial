@@ -15,17 +15,20 @@ $(document).ready(function() {
     },2500);
     
     var isShow = false;
+    var url = ''
     $('img.diary-img').click(function () { 
         console.log("in");
         var hito = $(this);
         if(!isShow){
+            url = './images/diary' + id + '-1.png'
             $(".diary-imglist").addClass("show");
-            hito.attr("src", "./images/man2.png");
+            hito.attr("src", url);
             isShow = true;
         }
         else{
+            url = './images/diary' + id + '-2.png'
             $(".diary-imglist").removeClass("show");
-            hito.attr("src", "./images/man.png");
+            hito.attr("src", url);
             isShow = false;
         }
     });
@@ -55,7 +58,7 @@ $(document).on('click', '.diary-imglist', function(){
 });
 
 function updateDiary(mem, date){
-    var url = 'https://raw.githubusercontent.com/linxiii/nnw-unofficial/main/diary/' + date + '-' + mem + '.html'
+    var url = 'https://raw.githubusercontent.com/linxiii/nnw-unofficial/main/diary/' + date + '-' + mem 
     var txt = httpGet(url)
     $(".diary-content").html(txt);
     $(".diary-content").attr('date', date);
