@@ -108,7 +108,7 @@ $(document).ready(function(){
                             slidesToShow: 4,
                             slidesToScroll: 1,
                             autoplay: true,
-                            autoplaySpeed: 2000,
+                            autoplaySpeed: 5000,
                             dots: true,
                             dotsClass: 'gallery-dots',
                         }
@@ -119,7 +119,7 @@ $(document).ready(function(){
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             autoplay: true,
-                            autoplaySpeed: 2000,
+                            autoplaySpeed: 5000,
                             dots: true,
                             dotsClass: 'gallery-dots',
                         }
@@ -135,6 +135,9 @@ $(document).ready(function(){
 // $(document).on('click', '.gallery img', function(){
 //     $('.main img').attr('src', $(this).attr('src'));
 // });
+$(document).on('click', '.navbar li', function(){
+    window.location.href = $(this).attr('href')
+})
 // fade to another page
 window.transitionToPage = function(href) {
     document.querySelector('body').style.opacity = 0;
