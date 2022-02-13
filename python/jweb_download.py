@@ -46,7 +46,7 @@ def getDiary(memidx, url, headers, findPre):
         content = soup.find(class_="back_number__list")
         content = content.find_all(class_="panel")
         for i in content:
-            getDiary(memidx, "https://www.johnnys-web.com" + i["href"], headers, False)
+            dcnt += getDiary(memidx, "https://www.johnnys-web.com" + i["href"], headers, False)
             time.sleep(2)
 
     # 下載日記中的圖片
@@ -97,12 +97,8 @@ def getDiary(memidx, url, headers, findPre):
     fd.write(html)
     fd.close()
 
-    # git push
-    if dcnt > 0:
-        os.system('git add .')
-        x = datetime.now()
-        os.system('git commit -m "%s" -m "daily update"' % x.strftime("%y%m%d-%H%M"))
-        os.system('git push')
+    return dcnt
+    
     
 
 def main():
@@ -121,14 +117,22 @@ def main():
     headers = {'User-Agent': userAgent, 'Cookie': cookies}
 
     # 掃所有成員的所有日記
+    cnt = 0
     if memidx == 0:
         for i in range(1, 8):
             url = "https://www.johnnys-web.com/s/jwb/diary/766/list?ct=%s" % i
-            getDiary(i, url, headers, iaAll)
+            cnt += getDiary(i, url, headers, iaAll)
             time.sleep(2)
     else:
         url = "https://www.johnnys-web.com/s/jwb/diary/766/list?ct=%s" % memidx
-        getDiary(memidx, url, headers, iaAll)
+        cnt += getDiary(memidx, url, headers, iaAll)
+    
+    # git push
+    if cnt > 0:
+        os.system('git add .')
+        x = datetime.now()
+        os.system('git commit -m "%s" -m "daily update"' % x.strftime("%y%m%d-%H%M"))
+        os.system('git push')
 
 if __name__ == '__main__':
     main()
