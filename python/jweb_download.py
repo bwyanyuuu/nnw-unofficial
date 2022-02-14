@@ -36,7 +36,7 @@ def getDiary(memidx, url, headers, findPre):
     filename = "%s/%s %s.html" % (path, daystr, nameMem[memidx])
     if os.path.isfile(filename):
         print(filename + " already exist!")
-        return
+        return 0
     else:
         print(filename + " downloading!")
         dcnt += 1
@@ -99,7 +99,7 @@ def getDiary(memidx, url, headers, findPre):
     fd.write(html)
     fd.close()
 
-    return True
+    return dcnt
     
     
 
@@ -123,15 +123,14 @@ def main():
     if memidx == 0:
         for i in range(1, 8):
             url = "https://www.johnnys-web.com/s/jwb/diary/766/list?ct=%s" % i
-            cnt = getDiary(i, url, headers, iaAll)
+            cnt += getDiary(i, url, headers, iaAll)
             time.sleep(2)
     else:
         url = "https://www.johnnys-web.com/s/jwb/diary/766/list?ct=%s" % memidx
-        cnt = getDiary(memidx, url, headers, iaAll)
-    print(type(getDiary(1, url, headers, iaAll)))
+        cnt += getDiary(memidx, url, headers, iaAll)
     # git push
     if cnt > 0:
-        os.system('git add .')
+        os.system('git add ..')
         x = datetime.now()
         os.system('git commit -m "%s" -m "daily update"' % x.strftime("%y%m%d-%H%M"))
         os.system('git push')
