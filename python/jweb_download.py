@@ -58,7 +58,9 @@ def getDiary(memidx, url, headers, findPre):
         imgnn = "/" + daystr + "_" + imgMem[memidx] + "_" + str(cnt) + ".jpg"
         imgName = path + "/images" + imgnn
         html = html.replace(i['src'][i['src'].rfind('/'):], imgnn) 
-        imgfile = urllib.request.urlretrieve(imgurl, imgName)
+        urllib.request.urlretrieve(imgurl, imgName)
+        imgName = "../images/content" + imgnn
+        urllib.request.urlretrieve(imgurl, imgName)
         cnt += 1
         
     # 更改網頁 static 檔案路徑到本地
@@ -97,7 +99,7 @@ def getDiary(memidx, url, headers, findPre):
     fd.write(html)
     fd.close()
 
-    return dcnt
+    return True
     
     
 
@@ -108,7 +110,7 @@ def main():
 
     memidx = int(sys.argv[1])
     iaAll = False
-    if len(sys.argv) > 2 and argv[2] == "-a":
+    if len(sys.argv) > 2 and sys.argv[2] == "-a":
         isAll = True
 
     # header 填入自己的 cookie
@@ -121,12 +123,12 @@ def main():
     if memidx == 0:
         for i in range(1, 8):
             url = "https://www.johnnys-web.com/s/jwb/diary/766/list?ct=%s" % i
-            cnt += getDiary(i, url, headers, iaAll)
+            cnt = getDiary(i, url, headers, iaAll)
             time.sleep(2)
     else:
         url = "https://www.johnnys-web.com/s/jwb/diary/766/list?ct=%s" % memidx
-        cnt += getDiary(memidx, url, headers, iaAll)
-    
+        cnt = getDiary(memidx, url, headers, iaAll)
+    print(type(getDiary(1, url, headers, iaAll)))
     # git push
     if cnt > 0:
         os.system('git add .')
