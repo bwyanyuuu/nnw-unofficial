@@ -92,7 +92,7 @@ def getDiary(memidx, url, headers, findPre):
     d.write(sd.prettify(indent_width=4))
     d.close()
 
-    contentFile('../', daystr, memidx, soup)
+    contentFile('../', daystr, memidx, html)
 
     # 儲存網頁
     fd = open(filename, "w", encoding="UTF-8")

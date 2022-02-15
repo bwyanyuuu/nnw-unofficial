@@ -23,6 +23,7 @@ def contentFile(path, date, memidx, soup):
     content = content.replace('./images', './images/content')
     content = content.replace('<div class="entry__body wysiwyg">\n', '')
     ret = '<img src="./images/diary/%d_top.png"/>\n' % memidx
+    ret += "20%s.%s.%s\n<br>\n" % (date[:2], date[2:4], date[4:])
     ret += content[:-6]
 
     outname = path + '/content/%s-nnw%d' % (date, memidx)

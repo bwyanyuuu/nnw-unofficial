@@ -1,9 +1,11 @@
 var mem = $('html').attr('id');
 $(document).ready(function() {
+    $('.nav').hide();
     // initial diary content
-    
     updateDiary(mem, $('.diary-list ul li:first-child').attr('id'));
     setTimeout(function(){
+        
+        $('.nav').fadeIn(1000);
         $('.diary-list').fadeIn(1000);
         $('.diary').show();
         $('.diary-list').css("display", "flex");
@@ -11,6 +13,7 @@ $(document).ready(function() {
     },1000);
     setTimeout(function(){
         $('.diary-content').fadeIn(1000);
+        
         $('img.diary-img').show();
     },2500);
     
