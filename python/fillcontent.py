@@ -18,7 +18,10 @@ def addDiarylist(date, soup):
     ne.append(new)
     soup.find('div', class_='diary-list').find('ul').insert(0, ne)
 
-def contentFile(path, date, memidx, soup):
+def contentFile(path, date, memidx, filepath):
+    f = open(filepath, 'r', encoding="utf-8")
+    html = f.read()
+    soup = BeautifulSoup(html, "html.parser")
     content = str(soup.find('div', class_='entry__body'))
     content = content.replace('./images', './images/content')
     content = content.replace('<div class="entry__body wysiwyg">\n', '')
@@ -54,11 +57,9 @@ def main():
 
             # new file
             filepath = dir + filename
-            f = open(filepath, 'r', encoding="utf-8")
-            html = f.read()
-            soup = BeautifulSoup(html, "html.parser")
+            
 
-            contentFile('.', date, memidx, soup)
+            contentFile('.', date, memidx, filepath)
             # content = str(soup.find('div', class_='entry__body'))
             # content = content.replace('./images', './images/content')
             # content = content.replace('<div class="entry__body wysiwyg">\n', '')

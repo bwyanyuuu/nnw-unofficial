@@ -81,6 +81,7 @@ def getDiary(memidx, url, headers, findPre):
         except:
             pass
     html = html.replace("/images/53/287/", "./images/")
+    
     # 加入網頁
     n = '../diarya%d.html' % memidx
     d = open(n, 'r', encoding='utf-8')
@@ -92,13 +93,15 @@ def getDiary(memidx, url, headers, findPre):
     d.write(sd.prettify(indent_width=4))
     d.close()
 
-    contentFile('../', daystr, memidx, html)
+    
 
     # 儲存網頁
     fd = open(filename, "w", encoding="UTF-8")
     fd.write(html)
     fd.close()
 
+    contentFile('../', daystr, memidx, filename)
+    
     return dcnt
     
     
