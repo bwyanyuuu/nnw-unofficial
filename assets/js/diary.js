@@ -1,21 +1,27 @@
 var mem = $('html').attr('id');
 $(document).ready(function() {
-    $('.nav').hide();
+    var winWide = window.screen.width;
+    console.log(winWide);
     // initial diary content
     updateDiary(mem, $('.diary-list ul li:first-child').attr('id'));
-    setTimeout(function(){
+    if(winWide > 768){
+        $('.nav').hide();
         
-        $('.nav').fadeIn(1000);
-        $('.diary-list').fadeIn(1000);
-        $('.diary').show();
-        $('.diary-list').css("display", "flex");
-        $('.diary').css("display", "flex");
-    },1000);
-    setTimeout(function(){
-        $('.diary-content').fadeIn(1000);
-        
-        $('img.diary-img').show();
-    },2500);
+        setTimeout(function(){
+            
+            $('.nav').fadeIn(1000);
+            $('.diary-list').fadeIn(1000);
+            $('.diary').show();
+            $('.diary-list').css("display", "flex");
+            $('.diary').css("display", "flex");
+        },1000);
+        setTimeout(function(){
+            $('.diary-content').fadeIn(1000);
+            
+            $('img.diary-img').show();
+        },2500);
+    }
+    
     
     var isShow = false;
     var url = ''
@@ -34,6 +40,46 @@ $(document).ready(function() {
             isShow = false;
         }
     });    
+});
+
+Breakpoints({
+    s: {
+        min: 0,
+        max: 767
+    },
+    m: {
+        min: 768,
+        max: 1200
+    },
+    l: {
+        min: 1200,
+        max: Infinity
+    }
+});
+
+Breakpoints.get('s').on({
+    enter: function(){
+        $('html').addClass('s')
+    },
+    leave: function(){
+        $('html').removeClass('s')
+    }
+});
+Breakpoints.get('m').on({
+    enter: function(){
+        $('html').addClass('m')
+    },
+    leave: function(){
+        $('html').removeClass('m')
+    }
+});
+Breakpoints.get('s').on({
+    enter: function(){
+        $('html').addClass('l')
+    },
+    leave: function(){
+        $('html').removeClass('l')
+    }
 });
 
 $(document).on('click', '.diary-list li', function(){

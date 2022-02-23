@@ -116,7 +116,10 @@
     margin: auto 0;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 768px) {
+    .nav{
+        position: fixed;
+    }
     .nav-small{
         width: 100vw;
         height: 0%;
