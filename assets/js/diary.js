@@ -21,6 +21,12 @@ $(document).ready(function() {
             $('img.diary-img').show();
         },2500);
     }
+    else{
+        setTimeout(function(){
+            $('.bg-color').show();
+            $('img.diary-img').show();
+        }, 2000)
+    }
     
     
     var isShow = false;

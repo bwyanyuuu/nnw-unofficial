@@ -211,10 +211,17 @@ header a{
     left: 0;
     height: 100vh;
     width: 100vw;
-    background: #ffabd4;
     display: none;
     z-index: -2;
 }
+#nnw1 .bg-color{background: #ff0000;}
+#nnw2 .bg-color{background: #ff7b00;}
+#nnw3 .bg-color{background: #ffabd4;}
+#nnw4 .bg-color{background: #b85cd4;}
+#nnw5 .bg-color{background: #fded11;}
+#nnw6 .bg-color{background: #1ab6ff;}
+#nnw7 .bg-color{background: #91c222;}
+
 .diarymem{
     height: 100vh;
     width: 500px;
@@ -478,6 +485,10 @@ img {
         overflow-x: hidden;
         margin-bottom: 2em;
     }
+    body{
+        background-image: url("../../images/about.jpg");
+        background-position: center;
+    }
 
     /* .col-1, .col-2, .col-3, .col-4 , .col-5, .col-6, 
     .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, 
@@ -491,18 +502,20 @@ img {
         height: 100%;
     } */
 
-    .bg-color{
+    /* .bg-color{
         display: unset;
-    }
-
+    } */
+    /* .logo-big{
+        width: 80vh;
+    } */
     .diary{
         animation: none;
         display: flex;
         /* height: 100vh; */
     }
-    .diary-img{
+    /* .diary-img{
         display: unset;
-    }
+    } */
 
     .diary-content{
         display: block;
