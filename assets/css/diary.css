@@ -507,6 +507,8 @@ img {
     .diary-content{
         display: block;
         overflow: visible;
+        font-size: 20px;
+        padding-top: 2em;
     }
     .diary-list{
         display: none;
