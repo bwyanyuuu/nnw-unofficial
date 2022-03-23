@@ -48,46 +48,6 @@ $(document).ready(function() {
     });    
 });
 
-Breakpoints({
-    s: {
-        min: 0,
-        max: 767
-    },
-    m: {
-        min: 768,
-        max: 1200
-    },
-    l: {
-        min: 1200,
-        max: Infinity
-    }
-});
-
-Breakpoints.get('s').on({
-    enter: function(){
-        $('html').addClass('s')
-    },
-    leave: function(){
-        $('html').removeClass('s')
-    }
-});
-Breakpoints.get('m').on({
-    enter: function(){
-        $('html').addClass('m')
-    },
-    leave: function(){
-        $('html').removeClass('m')
-    }
-});
-Breakpoints.get('s').on({
-    enter: function(){
-        $('html').addClass('l')
-    },
-    leave: function(){
-        $('html').removeClass('l')
-    }
-});
-
 $(document).on('click', '.diary-list li', function(){
     var id = $(this).attr("id");
     if($('.diary-content').attr("date") != id){
@@ -144,3 +104,44 @@ function httpGet(theUrl){
     
     return xmlhttp.response;
 }
+
+
+Breakpoints.defaults = {
+    s: {
+        min: 0,
+        max: 767
+    },
+    m: {
+        min: 768,
+        max: 1200
+    },
+    l: {
+        min: 1200,
+        max: Infinity
+    }
+};
+
+Breakpoints.get('s').on({
+    enter: function(){
+        $('html').addClass('s')
+    },
+    leave: function(){
+        $('html').removeClass('s')
+    }
+});
+Breakpoints.get('m').on({
+    enter: function(){
+        $('html').addClass('m')
+    },
+    leave: function(){
+        $('html').removeClass('m')
+    }
+});
+Breakpoints.get('s').on({
+    enter: function(){
+        $('html').addClass('l')
+    },
+    leave: function(){
+        $('html').removeClass('l')
+    }
+});
