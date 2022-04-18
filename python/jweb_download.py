@@ -34,6 +34,7 @@ def getDiary(memidx, url, headers, findPre):
     day = [int(d) for d in day]
     daystr = "%02d%02d%02d" % (day[0] % 100, day[1], day[2])
     filename = "%s/%s %s.html" % (path, daystr, nameMem[memidx])
+    
     if os.path.isfile(filename):
         print(filename + " already exist!")
         return 0
@@ -43,6 +44,7 @@ def getDiary(memidx, url, headers, findPre):
 
     # 找到以前所有 post
     if findPre == True:
+        print("tr")
         content = soup.find(class_="back_number__list")
         content = content.find_all(class_="panel")
         for i in content:
@@ -112,7 +114,7 @@ def main():
         exit()
 
     memidx = int(sys.argv[1])
-    iaAll = False
+    isAll = False
     if len(sys.argv) > 2 and sys.argv[2] == "-a":
         isAll = True
 
@@ -126,11 +128,11 @@ def main():
     if memidx == 0:
         for i in range(1, 8):
             url = "https://www.johnnys-web.com/s/jwb/diary/766/list?ct=%s" % i
-            cnt += getDiary(i, url, headers, iaAll)
+            cnt += getDiary(i, url, headers, isAll)
             time.sleep(2)
     else:
         url = "https://www.johnnys-web.com/s/jwb/diary/766/list?ct=%s" % memidx
-        cnt += getDiary(memidx, url, headers, iaAll)
+        cnt += getDiary(memidx, url, headers, isAll)
     # git push
     if cnt > 0:
         os.system('git add ..')
