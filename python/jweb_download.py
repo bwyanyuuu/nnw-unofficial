@@ -120,7 +120,7 @@ def main():
 
     # header 填入自己的 cookie
     userAgent = "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Mobile Safari/537.36 Edg/97.0.1072.69"
-    cookies = "S5SI=8rs0ctbvhomv18rul90982nqkuplu2md; _gid=GA1.2.1989978558.1648278960; _gat_UA-138599890-11=1; 2982884DD3255EBE=845878ab043d00e31d68e2964134f2a108189834; _ga_HSEHV5RVJR=GS1.1.1648281070.3.1.1648281075.0; _ga=GA1.2.453061115.1646057252"
+    cookies = "jwb_inbox_access=202204272059; 2982884DD3255EBE=108fbf4c9ca15ebb97c9a02967497028c9d8b5c5; S5SI=5kh1enjdbnk5kvujrgfn4mp5sn8es06k; _gid=GA1.2.946364478.1651323892; _gat_UA-138599890-11=1; _ga=GA1.2.453061115.1646057252; _ga_HSEHV5RVJR=GS1.1.1651323891.7.1.1651323917.0"
     headers = {'User-Agent': userAgent, 'Cookie': cookies}
 
     # 掃所有成員的所有日記
